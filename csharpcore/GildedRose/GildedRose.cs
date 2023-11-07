@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GildedRose.Strategy;
 
 namespace GildedRoseKata;
 
@@ -11,6 +12,20 @@ public class GildedRose
         _items = items;
     }
 
+    public void UpdateQuality2()
+    {
+        for (var i = 0; i < _items.Count; i++)
+        {
+            switch (_items[i].Name)
+            {
+                case "Aged Brie":
+                    var updateQuality = new UpdateQuality(new AgedBrie());
+                    updateQuality.Update(_items[i]);
+                    break;
+                default:break;
+            }
+        }
+    }
     public void UpdateQuality()
     {
         for (var i = 0; i < _items.Count; i++)
